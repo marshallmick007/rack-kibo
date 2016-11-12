@@ -95,9 +95,9 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## TODO
 
-[] - Optionally allow servers response code to be returned by Kibo
+- [ ] Optionally allow servers response code to be returned by Kibo
 instead of returning 200 for errors
-[] - Optionally allow additional `Content-Type`'s to trigger Kibo
+- [ ] Optionally allow additional `Content-Type`'s to trigger Kibo
 response wrapping (ex: `application/vnd+customJSON`)
 
 ## Contributing
