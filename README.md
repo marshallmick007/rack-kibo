@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## What Kibo Does
 
-Kibo will wrap any request for,or response containing the JSON
+Kibo will wrap any request for JSON, or response containing the JSON
 Content-Type `application/json` in a simple structured JSON object:
 
 ```javascript
@@ -37,8 +37,8 @@ Content-Type `application/json` in a simple structured JSON object:
 
 Kibo will always return a successful HTTP Status code (anything less
 than 400) unless there was an error within Kibo itself. If the response
-from your server is an error code, Kibo returns HTTP 200, with the
-`success` property of `false`
+from your server is an error code, Kibo returns HTTP 200, with the `success` 
+property of `false`
 
 
 ## Getting Started
@@ -47,7 +47,11 @@ from your server is an error code, Kibo returns HTTP 200, with the
 
 Add the middleware to your Rack app
 
+
+
 ```ruby
+require 'rack/kibo'
+
 use Rack::Kibo
 ```
 
