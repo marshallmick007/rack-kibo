@@ -1,10 +1,6 @@
 require 'rack'
 require 'json'
 
-class SomethingTest
-
-end
-
 module Rack
   ##
   # Rack Middleware which presents a clean API to JSON responses
@@ -71,6 +67,9 @@ module Rack
 
       # TODO: support an option to allow user to emit original status codes
       
+      # if there is an error, then respond with a 200
+      # so browser promises return as success responses
+      # instead of errors
       response[0] = 200 unless rs[:success]
       response
     end
@@ -87,6 +86,8 @@ module Rack
           server_result = result[2]
         end
         response = create_error_json(error, server_result)
+        # should send json content-type
+        rsp_env["Content-Type"] = JSON_CONTENT_TYPE
       end
       error_result = [500, rsp_env, [response]]
     end
