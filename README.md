@@ -91,6 +91,13 @@ or uppercase 'V'
 Kibo works for any request path, but will return a version of `0` if it
 does not find version information from the request path
 
+## Changes
+
+- **0.1.3** Removes `Content-Length` computation, lets `Rack` handle it
+  internally
+- **0.1.2** Support matching on `content-type` when multiple types are
+  supplied
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

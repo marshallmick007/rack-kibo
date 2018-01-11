@@ -15,6 +15,7 @@ module Rack
     ##
     # Standard JSON content-type
     JSON_CONTENT_TYPE = "application/json"
+    JSON_CONTENT_TYPE_REGEX = /application\/json/
 
     ##
     # Creates a new instance of the CleanApi middleware
@@ -63,8 +64,10 @@ module Rack
         :body => create_payload(response[2])
       }
       response[2] = [ rs.to_json ]
-      response[1]["Content-Length"] = response[2][0].length.to_s
 
+      # Let Rack compute the content-length
+      #response[1]["Content-Length"] = response[2][0].length.to_s
+      response[1].delete("Content-Length")
       # TODO: support an option to allow user to emit original status codes
       
       # if there is an error, then respond with a 200
@@ -157,7 +160,7 @@ module Rack
     # response should be wrapped in the CleanApi
     def is_supported_content_type?(content_type)
       # TODO: Should we allow user-defined accept-encodings?
-      content_type == JSON_CONTENT_TYPE
+      content_type =~ JSON_CONTENT_TYPE_REGEX ? true : false
     end
 
   end
